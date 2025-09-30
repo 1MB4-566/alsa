@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>3rd Anniversary</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      background: url("b.jpg") no-repeat center center/cover;
+      background-color: #ffe6f0; /* fallback kalau gambar gak kebaca */
+    }
+
+    h1 {
+      color: #ff0066;
+      font-size: 28px;
+      font-weight: bold;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+      margin-bottom: 30px;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      background: #ff66b2;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      background: #ff3385;
+    }
+
+    /* --- Popup Modal --- */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 15px;
+      text-align: center;
+      max-width: 90%;
+      animation: fadeIn 0.5s;
+    }
+
+    .modal-content h2 {
+      color: #ff0066;
+      margin-bottom: 15px;
+    }
+
+    .modal-content p {
+      font-size: 16px;
+      color: #333;
+    }
+
+    .close {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #ff66b2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.8);}
+      to {opacity: 1; transform: scale(1);}
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 Happy 3rd Anniversary 🎉</h1>
+  <button onclick="openModal()">Klik di sini Baby ♡</button>
+
+  <!-- Musik -->
+  <audio id="bg-music" loop>
+    <source src="Blue Yungkai.mp3" type="audio/mpeg">
+    Browser kamu tidak mendukung audio.
+  </audio>
+
+  <!-- Modal -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <h2>Untuk Kamu 💖</h2>
+      <p>
+        Selamat Anniversary ke-3, Sayang ❤️<br>
+        Terima kasih sudah menemani setiap langkahku,<br>
+        semoga kita selalu bersama selamanya 💕
+      </p>
+      <button class="close" onclick="closeModal()">Tutup</button>
+    </div>
+  </div>
+
+  <script>
+    const music = document.getElementById("bg-music");
+    const modal = document.getElementById("myModal");
+
+    // aktifkan musik saat pertama kali layar disentuh/klik
+    document.body.addEventListener("click", () => {
+      if (music.paused) {
+        music.play().catch(err => console.log("Autoplay dicegah:", err));
+      }
+    }, { once: true });
+
+    function openModal() {
+      modal.style.display = "flex";
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+  </script>
+</body>
+</html>
